@@ -38,7 +38,7 @@ post '/visit' do
 
 	Client.create :name => @client_name, :phone => @client_phone, :datestamp => @datetime, :barber => @barber, :color => @color
 
-	erb "Спасибо! #{@client_name.capitalize}, мы будем ждать вас #{@client_date}"
+	erb "Спасибо! #{@client_name.capitalize}, мы будем ждать Вас #{@client_date}"
 end
 
 get '/contacts' do
