@@ -36,3 +36,14 @@ post '/visit' do
 
 	erb "Спасибо! #{@client_name.capitalize}, мы будем ждать вас #{@client_date}"
 end
+
+get '/contacts' do
+	erb :contacts
+end
+
+post '/contacts' do
+	@client_email = params[:client_email]
+	@client_text = params[:client_text]
+
+	erb "Спасибо! Мы напишем вам ответ на адрес #{@client_email}"
+end
