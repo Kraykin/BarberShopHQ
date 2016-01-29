@@ -12,9 +12,13 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 before do
 	@barbers = Barber.all
 	@clients = Client.all
+	@contacts = Contact.all
 end
 
 get '/' do
@@ -45,5 +49,7 @@ post '/contacts' do
 	@client_email = params[:client_email]
 	@client_text = params[:client_text]
 
-	erb "Спасибо! Мы напишем вам ответ на адрес #{@client_email}"
+	Contact.create :email => @client_email, :contact => @client_text
+
+	erb "Спасибо! Мы напишем Вам ответ на адрес #{@client_email}"
 end
