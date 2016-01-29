@@ -26,19 +26,23 @@ get '/' do
 end
 
 get '/visit' do
+	@appointment = { :name => '', :phone => '', :datestamp => '', :barber => '', :color => '' }
 	erb :visit
 end
 
 post '/visit' do
-	@client_name = params[:client_name]
-	@client_phone = params[:client_phone]
-	@datetime = params[:datetime]
-	@barber = params[:barber]
-	@color = params[:color]
+	@appointment = Client.new params[:client]
+	@appointment.save
 
-	Client.create :name => @client_name, :phone => @client_phone, :datestamp => @datetime, :barber => @barber, :color => @color
+	# @client_name = params[:client_name]
+	# @client_phone = params[:client_phone]
+	# @datetime = params[:datetime]
+	# @barber = params[:barber]
+	# @color = params[:color]
 
-	erb "Спасибо! #{@client_name.capitalize}, мы будем ждать Вас #{@client_date}"
+	# Client.create :name => @client_name, :phone => @client_phone, :datestamp => @datetime, :barber => @barber, :color => @color
+
+	erb "Спасибо! #{@appointment[:name].capitalize}, мы будем ждать Вас #{@appointment[:datestamp]}"
 end
 
 get '/contacts' do
