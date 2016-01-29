@@ -14,6 +14,7 @@ end
 
 before do
 	@barbers = Barber.all
+	@clients = Client.all
 end
 
 get '/' do
@@ -27,11 +28,11 @@ end
 post '/visit' do
 	@client_name = params[:client_name]
 	@client_phone = params[:client_phone]
-	@client_date = params[:client_date]
+	@datetime = params[:datetime]
 	@barber = params[:barber]
 	@color = params[:color]
 
-
+	Client.create :name => @client_name, :phone => @client_phone, :datestamp => @datetime, :barber => @barber, :color => @color
 
 	erb "Спасибо! #{@client_name.capitalize}, мы будем ждать вас #{@client_date}"
 end
