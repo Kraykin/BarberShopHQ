@@ -33,7 +33,7 @@ get '/' do
 end
 
 get '/visit' do
-	@appointment = { :name => '', :phone => '', :datestamp => '', :barber => '', :color => '' }
+	@appointment = { :name => '', :phone => '', :datestamp => '', :barber => '', :color => '', :email => '', :text => '' }
 	erb :visit
 end
 
@@ -49,14 +49,13 @@ post '/visit' do
 end
 
 get '/contacts' do
+	@contact = { :email => '', :contact => '' }
 	erb :contacts
 end
 
 post '/contacts' do
-	@client_email = params[:client_email]
-	@client_text = params[:client_text]
+	@contact = Contact.new params[:client]
+	@contact.save
 
-	Contact.create :email => @client_email, :contact => @client_text
-
-	erb "Спасибо! Мы напишем Вам ответ на адрес #{@client_email}"
+	erb "Спасибо! Мы напишем Вам ответ на адрес #{@contact[:email]}"
 end
