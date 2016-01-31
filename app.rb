@@ -61,5 +61,5 @@ post '/contacts' do
 end
 
 get '/about' do
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis sem vel feugiat consectetur. Phasellus vitae orci orci. Quisque maximus aliquet lectus, vitae tincidunt orci elementum eget."
+	erb :about
 end
