@@ -59,3 +59,7 @@ post '/contacts' do
 
 	erb "Спасибо! Мы напишем Вам ответ на адрес #{@contact[:email]}"
 end
+
+get '/about' do
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam iaculis sem vel feugiat consectetur. Phasellus vitae orci orci. Quisque maximus aliquet lectus, vitae tincidunt orci elementum eget."
+end
