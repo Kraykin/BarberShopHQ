@@ -33,7 +33,7 @@ get '/' do
 end
 
 get '/visit' do
-	@appointment = { :name => '', :phone => '', :datestamp => '', :barber => '', :color => '', :email => '', :text => '' }
+	@appointment = Client.new
 	erb :visit
 end
 
