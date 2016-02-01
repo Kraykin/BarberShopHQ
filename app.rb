@@ -39,8 +39,7 @@ end
 
 post '/visit' do
 	@appointment = Client.new params[:client]
-	@appointment.save
-
+	
 	# @client_name = params[:client_name]
 	# @client_phone = params[:client_phone]
 	# ...
@@ -53,8 +52,11 @@ post '/visit' do
 	# c.name = @client_name
 	# ...
 	# c.save
-
-	erb "Спасибо! #{@appointment[:name].capitalize}, мы будем ждать Вас #{@appointment[:datestamp]}"
+	if @appointment.save
+		erb "Спасибо! #{@appointment[:name].capitalize}, мы будем ждать Вас #{@appointment[:datestamp]}"
+	else
+		erb "Для записи необходимо заполнить все поля."
+	end
 end
 
 get '/contacts' do
