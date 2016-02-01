@@ -55,7 +55,8 @@ post '/visit' do
 	if @appointment.save
 		erb "Спасибо! #{@appointment[:name].capitalize}, мы будем ждать Вас #{@appointment[:datestamp]}"
 	else
-		erb "Для записи необходимо заполнить все поля."
+		@error = @appointment.errors.full_messages.first
+		erb :visit
 	end
 end
 
