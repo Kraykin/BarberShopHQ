@@ -42,8 +42,17 @@ post '/visit' do
 	@appointment.save
 
 	# @client_name = params[:client_name]
+	# @client_phone = params[:client_phone]
 	# ...
+	
 	# Client.create :name => @client_name, :phone => @client_phone, :datestamp => @datetime, :barber => @barber, :color => @color
+	
+	# OR
+	
+	# c = Client.new
+	# c.name = @client_name
+	# ...
+	# c.save
 
 	erb "Спасибо! #{@appointment[:name].capitalize}, мы будем ждать Вас #{@appointment[:datestamp]}"
 end
