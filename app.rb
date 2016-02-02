@@ -75,3 +75,7 @@ end
 get '/about' do
 	erb :about
 end
+
+get '/barber/:id' do
+	erb :barber
+end
