@@ -77,5 +77,6 @@ get '/about' do
 end
 
 get '/barber/:id' do
+	@barber = Barber.find params[:id]
 	erb :barber
 end
