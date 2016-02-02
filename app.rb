@@ -24,8 +24,8 @@ end
 
 before do
 	@barbers = Barber.all
-	@clients = Client.all
-	@contacts = Contact.all
+	#@clients = Client.all
+	#@contacts = Contact.all
 end
 
 get '/' do
@@ -79,4 +79,9 @@ end
 get '/barber/:id' do
 	@barber = Barber.find params[:id]
 	erb :barber
+end
+
+get '/bookings' do
+	@clients = Client.order 'created_at DESC'
+	erb :bookings
 end
