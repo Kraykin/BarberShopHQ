@@ -8,7 +8,7 @@ set :database, "sqlite3:barbershop.db"
 
 class Client < ActiveRecord::Base
 	validates :name, presence: true, length: { minimum: 3 }
-	validates :phone, presence: true, length: { minimum: 6 }
+	validates :phone, presence: true, length: { in: 6..12 }
 	validates :barber, presence: true
 	validates :datestamp, presence: true
 	validates :color, presence: true   
@@ -19,7 +19,7 @@ end
 
 class Contact < ActiveRecord::Base
 	validates :email, presence: true, length: { minimum: 4 }
-	validates :contact, presence: true, length: { minimum: 2 }
+	validates :contact, presence: true, length: { in: 2..5000 }
 end
 
 before do
