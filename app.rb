@@ -33,12 +33,12 @@ get '/' do
 end
 
 get '/visit' do
-	@appointment = Client.new
+	@booking = Client.new
 	erb :visit
 end
 
 post '/visit' do
-	@appointment = Client.new params[:client]
+	@booking = Client.new params[:client]
 	
 	# @client_name = params[:client_name]
 	# @client_phone = params[:client_phone]
@@ -52,10 +52,10 @@ post '/visit' do
 	# c.name = @client_name
 	# ...
 	# c.save
-	if @appointment.save
-		erb "Спасибо! #{@appointment[:name].capitalize}, мы будем ждать Вас #{@appointment[:datestamp]}"
+	if @booking.save
+		erb "Спасибо! #{@booking[:name].capitalize}, мы будем ждать Вас #{@booking[:datestamp]}"
 	else
-		@error = @appointment.errors.full_messages.first
+		@error = @booking.errors.full_messages.first
 		erb :visit
 	end
 end
