@@ -67,9 +67,13 @@ end
 
 post '/contacts' do
 	@contact = Contact.new params[:client]
-	@contact.save
-
-	erb "Спасибо! Мы напишем Вам ответ на адрес #{@contact[:email]}"
+	if @contact.save
+		erb "Спасибо! Мы напишем Вам ответ на адрес #{@contact[:email]}"
+	else
+		@error = @contact.errors.full_messages.first
+		erb :contacts
+	end
+	
 end
 
 get '/about' do
